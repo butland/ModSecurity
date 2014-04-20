@@ -9,6 +9,8 @@
 		SecRequestBodyAccess On
 		SecResponseBodyAccess On
 		SecResponseBodyMimeType null
+		SecDebugLogLevel 9
+		SecDebugLog /tmp/modsec-debug.log
 		SecAction "phase:1,pass,id:500033"
 		SecAction "phase:1,deny,id:500034"
 	),

@@ -114,6 +114,8 @@
 	conf => qq(
 		SecRuleEngine On
 		SecResponseBodyAccess On
+		SecDebugLog $ENV{DEBUG_LOG}
+		SecDebugLogLevel 9
 		SecResponseBodyMimeType text/plain null
 		SecResponseBodyLimit 8000
 	),

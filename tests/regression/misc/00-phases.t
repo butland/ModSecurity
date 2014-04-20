@@ -11,7 +11,7 @@
 		SecResponseBodyMimeType text/plain null
 		SecRule REQUEST_LINE "^POST" "phase:1,pass,log,auditlog,id:500169"
 		SecRule ARGS "val1" "phase:1,pass,log,auditlog,id:500170"
-		SecRule RESPONSE_HEADERS:Last-Modified "." "phase:1,pass,log,auditlog,id:500171"
+		SecRule RESPONSE_HEADERS:Content-Type "." "phase:1,pass,log,auditlog,id:500171"
 		SecRule RESPONSE_BODY "TEST" "phase:1,pass,log,auditlog,id:500172"
 	),
 	match_log => {
@@ -41,7 +41,7 @@
 		SecResponseBodyMimeType text/plain null
 		SecRule REQUEST_LINE "^POST" "phase:2,pass,log,auditlog,id:500173"
 		SecRule ARGS "val1" "phase:2,pass,log,auditlog,id:500174"
-		SecRule RESPONSE_HEADERS:Last-Modified "." "phase:2,pass,log,auditlog,id:500175"
+		SecRule RESPONSE_HEADERS:Content-Type "." "phase:2,pass,log,auditlog,id:500175"
 		SecRule RESPONSE_BODY "TEST" "phase:2,pass,log,auditlog,id:500176"
 	),
 	match_log => {
@@ -69,6 +69,9 @@
 		SecRequestBodyAccess On
 		SecResponseBodyAccess On
 		SecResponseBodyMimeType text/plain null
+		SecDebugLog "$ENV{DEBUG_LOG}"
+		SecDebugLogLevel 9
+
 		SecRule REQUEST_LINE "^POST" "phase:3,pass,log,auditlog,id:500177"
 		SecRule ARGS "val1" "phase:3,pass,log,auditlog,id:500178"
 		SecRule RESPONSE_HEADERS:Last-Modified "." "phase:3,pass,log,auditlog,id:500179"

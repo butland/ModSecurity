@@ -11,11 +11,16 @@ http {
 	ModSecurityEnabled [% enable %];
 	ModSecurityConfig [% config %];
 	server {
-
+		client_max_body_size 30M;
 		listen [% listen %];
 		server_name localhost;
 		location / {
-			error_page 405 = $uri;
+		}
+		location /test.txt {
+			echo "TEST";
+		}
+		location /test2.txt {
+			echo "TEST 2";
 		}
 	}
 }
